@@ -4,6 +4,9 @@ This repo compares two builds of the same web app by the same coding agent. One 
 [Groundwork](#about-groundwork) Claude Code plugin; the other did not. Both apps, their session usage
 and the PDFs they produced are kept here as they were, so anyone can check the results.
 
+**Full report:** [docs/groundwork_vs_adhoc_eval.pdf](docs/groundwork_vs_adhoc_eval.pdf) (8 pages) covers
+cost, code quality, documentation, testing, output quality and what this means at production scale.
+
 ## The experiment
 
 Both sessions got this exact one-sentence prompt:
@@ -22,6 +25,7 @@ Both apps then converted the same test document (a public Markdown feature cheat
 ## Repository layout
 
 ```
+docs/                        full evaluation report (PDF)
 without_groundwork/          app built without the plugin, as produced
   eval_results/              session usage screenshot and the PDF it produced
 with_groundwork/             app built with the plugin, as produced
