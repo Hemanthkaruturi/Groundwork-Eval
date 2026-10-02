@@ -1,0 +1,7 @@
+.md-body[data-theme="github"] {
+  --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --border: #d1d9e0; --link: #0969da; --code-bg: #f6f8fa;
+  --font-body: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; --font-head: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  --hl-comment: #59636e; --hl-keyword: #cf222e; --hl-string: #0a3069; --hl-number: #0550ae; --hl-title: #8250df; --hl-builtin: #953800; --hl-variable: #953800;
+  --size: 16px;
+}

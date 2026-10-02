@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Markdown to PDF</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--fg:#1f2328;--mut:#656d76;--bd:#d0d7de;--acc:#2f6feb}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--mut:#8b949e;--bd:#30363d;--acc:#4c8dff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--bd);background:var(--card)}
+h1{font-size:18px;margin:0;margin-right:auto}
+button,select,label.btn{font:inherit;padding:7px 14px;border-radius:6px;border:1px solid var(--bd);background:var(--card);color:var(--fg);cursor:pointer}
+button.primary{background:var(--acc);border-color:var(--acc);color:#fff}button:disabled{opacity:.6;cursor:wait}
+main{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px;height:calc(100vh - 66px)}
+@media(max-width:800px){main{grid-template-columns:1fr;height:auto}}
+.pane{background:var(--card);border:1px solid var(--bd);border-radius:8px;display:flex;flex-direction:column;min-height:300px;overflow:hidden}
+.pane h2{margin:0;padding:8px 14px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);border-bottom:1px solid var(--bd)}
+textarea{flex:1;border:0;padding:14px;resize:none;background:transparent;color:inherit;font:13px/1.55 ui-monospace,Menlo,Consolas,monospace;outline:none}
+#preview{flex:1;overflow:auto;padding:14px 20px}
+#preview pre{background:rgba(127,127,127,.12);padding:10px;border-radius:6px;overflow:auto}
+#preview table{border-collapse:collapse}#preview td,#preview th{border:1px solid var(--bd);padding:4px 10px}
+#preview img{max-width:100%}#preview blockquote{border-left:4px solid var(--bd);margin-left:0;padding-left:1em;color:var(--mut)}
+#msg{color:#d1242f;font-size:13px}
+</style></head><body>
+<header>
+  <h1>Markdown → PDF</h1>
+  <span id="msg" role="alert"></span>
+  <label class="btn">Open .md file<input id="file" type="file" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden></label>
+  <select id="size" aria-label="Page size"><option>A4</option><option>Letter</option></select>
+  <button id="dl" class="primary">Download PDF</button>
+</header>
+<main>
+  <section class="pane"><h2>Markdown</h2><textarea id="src" spellcheck="false" placeholder="Paste Markdown here or open a file…"></textarea></section>
+  <section class="pane"><h2>Preview</h2><div id="preview"></div></section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const src = $('src'), preview = $('preview'), msg = $('msg'), dl = $('dl');
+let filename = 'document', timer;
+src.value = "# Hello\n\nWrite **Markdown** here.\n\n- [x] Live preview\n- [ ] Download as PDF\n\n```js\nconsole.log('hi');\n```\n";
+
+async function render() {
+  try {
+    const r = await fetch('/api/preview', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({markdown: src.value})});
+    preview.innerHTML = (await r.json()).html;
+  } catch {}
+}
+src.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(render, 250); });
+
+$('file').addEventListener('change', async e => {
+  const f = e.target.files[0]; if (!f) return;
+  filename = f.name; src.value = await f.text(); render(); e.target.value = '';
+});
+
+dl.addEventListener('click', async () => {
+  msg.textContent = '';
+  if (!src.value.trim()) { msg.textContent = 'Nothing to convert.'; return; }
+  dl.disabled = true; dl.textContent = 'Generating…';
+  try {
+    const r = await fetch('/api/convert', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({markdown: src.value, filename, pageSize: $('size').value})});
+    if (!r.ok) throw new Error((await r.json()).error);
+    const url = URL.createObjectURL(await r.blob());
+    const a = Object.assign(document.createElement('a'), {href: url, download: filename.replace(/\.(md|markdown|txt)$/i,'') + '.pdf'});
+    a.click(); URL.revokeObjectURL(url);
+  } catch (e) { msg.textContent = e.message || 'Failed.'; }
+  dl.disabled = false; dl.textContent = 'Download PDF';
+});
+render();
+</script></body></html>

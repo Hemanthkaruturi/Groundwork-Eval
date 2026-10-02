@@ -1,0 +1,42 @@
+/* Shared structure for rendered Markdown. Colours and fonts come from themes/*.css. */
+.md-body { box-sizing: border-box; line-height: 1.6; overflow-wrap: break-word; padding: 24px 32px;
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--size, 16px); }
+.md-body h1, .md-body h2, .md-body h3, .md-body h4, .md-body h5, .md-body h6 {
+  font-family: var(--font-head); line-height: 1.25; margin: 1.4em 0 .5em; color: var(--head, var(--fg));
+  break-after: avoid; page-break-after: avoid; break-inside: avoid; }
+.md-body h1 { font-size: 2em; border-bottom: 1px solid var(--border); padding-bottom: .3em; }
+.md-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: .25em; }
+.md-body h3 { font-size: 1.25em; }
+.md-body > :first-child { margin-top: 0; }
+.md-body p, .md-body ul, .md-body ol, .md-body blockquote, .md-body table, .md-body pre { margin: 0 0 1em; }
+.md-body a { color: var(--link); }
+.md-body img { max-width: 100%; }
+.md-body blockquote { margin-left: 0; padding: 0 1em; color: var(--muted); border-left: 4px solid var(--border); }
+.md-body hr { border: 0; border-top: 1px solid var(--border); margin: 1.5em 0; }
+.md-body table { border-collapse: collapse; max-width: 100%; display: block; overflow-x: auto; }
+.md-body th, .md-body td { border: 1px solid var(--border); padding: 6px 12px; }
+.md-body th { background: var(--code-bg); }
+.md-body code { font-family: var(--font-mono); font-size: .9em; background: var(--code-bg); padding: .15em .35em; border-radius: 4px; }
+.md-body pre { background: var(--code-bg); padding: 12px 16px; border-radius: 6px; overflow-x: auto; page-break-inside: avoid; }
+/* Wrap long code lines: paper cannot scroll, so overflow would be cut off in the PDF (FR-8). */
+.md-body pre code { background: none; padding: 0; font-size: .85em; white-space: pre-wrap; overflow-wrap: anywhere; }
+.md-body ul:has(> .task-list-item) { list-style: none; padding-left: 1.2em; }
+.md-body .task-list-item-checkbox { margin: 0 .5em 0 0; }
+.md-body .mermaid-diagram { text-align: center; margin: 0 0 1em; page-break-inside: avoid; }
+.md-body .mermaid-diagram svg { max-width: 100%; height: auto; }
+.md-body .render-error { display: inline-block; border: 1px dashed #c0392b; color: #c0392b; background: #fdecea;
+  padding: 2px 8px; border-radius: 4px; font-size: .9em; }
+.md-body section:has(> eqn), .md-body eqn { display: block; }
+.md-body section > eqn { text-align: center; margin: 1em 0; }
+/* highlight.js tokens (colours from theme variables) */
+.md-body .hljs { color: var(--fg); }
+.md-body .hljs-comment, .md-body .hljs-quote { color: var(--hl-comment); font-style: italic; }
+.md-body .hljs-keyword, .md-body .hljs-selector-tag, .md-body .hljs-literal, .md-body .hljs-doctag { color: var(--hl-keyword); }
+.md-body .hljs-string, .md-body .hljs-regexp, .md-body .hljs-addition { color: var(--hl-string); }
+.md-body .hljs-number, .md-body .hljs-symbol, .md-body .hljs-bullet { color: var(--hl-number); }
+.md-body .hljs-title, .md-body .hljs-section, .md-body .hljs-name { color: var(--hl-title); }
+.md-body .hljs-built_in, .md-body .hljs-type, .md-body .hljs-attr, .md-body .hljs-attribute { color: var(--hl-builtin); }
+.md-body .hljs-variable, .md-body .hljs-template-variable, .md-body .hljs-deletion { color: var(--hl-variable); }
+.md-body .hljs-meta { color: var(--hl-comment); }
+.md-body .hljs-emphasis { font-style: italic; }
+.md-body .hljs-strong { font-weight: bold; }

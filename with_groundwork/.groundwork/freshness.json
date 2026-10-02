@@ -1,0 +1,46 @@
+{
+  "AGENTS.md": {
+    "at": "2026-10-02T04:42:25+0000",
+    "by": "karuturihemanth@gmail.com",
+    "epoch": 1790916145,
+    "hash": "c1f74bbdd87303f2",
+    "snapshot": {
+      "signals": {
+        "package.json": "3115f2fbf47652df"
+      }
+    }
+  },
+  "ARCHITECTURE.md": {
+    "at": "2026-10-02T04:42:25+0000",
+    "by": "karuturihemanth@gmail.com",
+    "epoch": 1790916145,
+    "hash": "aa23ef7374bc696f",
+    "snapshot": {
+      "rfcs": [
+        "RFC-0001-markdown-to-pdf-app"
+      ],
+      "signals": {
+        "package.json": "3115f2fbf47652df"
+      },
+      "toplevel": [
+        "public",
+        "server",
+        "test"
+      ]
+    }
+  },
+  "CONSTITUTION.md": {
+    "at": "2026-10-02T04:42:25+0000",
+    "by": "karuturihemanth@gmail.com",
+    "epoch": 1790916145,
+    "hash": "aaf398f80406cfd7",
+    "snapshot": {}
+  },
+  "PROJECT.md": {
+    "at": "2026-10-02T04:42:25+0000",
+    "by": "karuturihemanth@gmail.com",
+    "epoch": 1790916145,
+    "hash": "31f5c329f0063198",
+    "snapshot": {}
+  }
+}

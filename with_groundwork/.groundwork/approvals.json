@@ -1,0 +1,22 @@
+{
+  "DECISIONS/RFC-0001-markdown-to-pdf-app.md": {
+    "hash": "bda660ab8cb0c9ca19d6890207a9593d28b2056ff067fce01900e83d84ffff7b",
+    "signers": [
+      {
+        "who": "karuturihemanth@gmail.com",
+        "at": "2026-10-02T04:28:14+0000"
+      }
+    ],
+    "changes": 0
+  },
+  "specs/001-markdown-to-pdf/spec.md": {
+    "hash": "619a00843510edb2c4da05b8346ddf28777d8194304b6a99a6abdb8bc7bfa958",
+    "signers": [
+      {
+        "who": "karuturihemanth@gmail.com",
+        "at": "2026-10-02T04:35:10+0000"
+      }
+    ],
+    "changes": 1
+  }
+}

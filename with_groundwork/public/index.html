@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markdown to PDF</title>
+<link rel="stylesheet" href="/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="/base.css">
+<link rel="stylesheet" href="/themes/clean.css">
+<link rel="stylesheet" href="/themes/github.css">
+<link rel="stylesheet" href="/themes/dark.css">
+<link rel="stylesheet" href="/themes/print.css">
+<link rel="stylesheet" href="/app.css">
+<script src="/vendor/hljs/highlight.min.js"></script>
+<script src="/vendor/katex/katex.min.js"></script>
+<script src="/vendor/texmath/texmath.js"></script>
+<script src="/vendor/task-lists/markdown-it-task-lists.min.js"></script>
+<script src="/vendor/mermaid/mermaid.min.js"></script>
+<script src="/render.js"></script>
+<script src="/app.js" defer></script>
+</head>
+<body>
+<header class="bar">
+  <h1>Markdown to PDF</h1>
+  <div class="controls">
+    <label class="file-btn">Upload .md file
+      <input type="file" id="file" accept=".md,.markdown">
+    </label>
+    <label>Theme
+      <select id="theme">
+        <option value="clean">Clean document</option>
+        <option value="github">GitHub</option>
+        <option value="dark">Dark</option>
+        <option value="print">Minimal print</option>
+      </select>
+    </label>
+    <label>Paper size
+      <select id="size">
+        <option value="A4">A4</option><option value="Letter">Letter</option>
+        <option value="Legal">Legal</option><option value="A3">A3</option>
+      </select>
+    </label>
+    <label>Orientation
+      <select id="orientation">
+        <option value="portrait">Portrait</option><option value="landscape">Landscape</option>
+      </select>
+    </label>
+    <label>Margins
+      <select id="margins">
+        <option value="narrow">Narrow</option><option value="normal" selected>Normal</option><option value="wide">Wide</option>
+      </select>
+    </label>
+    <label class="check"><input type="checkbox" id="pageNumbers" checked> Page numbers</label>
+    <button id="download" type="button">Download PDF</button>
+  </div>
+</header>
+<div id="messages" role="status" aria-live="polite"></div>
+<main class="panes">
+  <section class="pane">
+    <label for="editor" class="pane-title">Markdown</label>
+    <textarea id="editor" spellcheck="false" placeholder="Type or paste Markdown here, or upload a .md file"></textarea>
+  </section>
+  <section class="pane">
+    <h2 class="pane-title" id="preview-title">Preview</h2>
+    <div id="preview" aria-labelledby="preview-title"></div>
+  </section>
+</main>
+</body>
+</html>

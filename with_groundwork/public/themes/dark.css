@@ -1,0 +1,6 @@
+.md-body[data-theme="dark"] {
+  --bg: #0d1117; --fg: #e6edf3; --head: #ffffff; --muted: #9da7b3; --border: #30363d; --link: #58a6ff; --code-bg: #161b22;
+  --font-body: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; --font-head: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  --hl-comment: #8b949e; --hl-keyword: #ff7b72; --hl-string: #a5d6ff; --hl-number: #79c0ff; --hl-title: #d2a8ff; --hl-builtin: #ffa657; --hl-variable: #ffa657;
+}

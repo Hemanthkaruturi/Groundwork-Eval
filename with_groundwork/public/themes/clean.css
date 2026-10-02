@@ -1,0 +1,6 @@
+.md-body[data-theme="clean"] {
+  --bg: #fffefb; --fg: #2b2b2b; --head: #1a1a1a; --muted: #666; --border: #ddd8cc; --link: #1d5fa8; --code-bg: #f4f1ea;
+  --font-body: Georgia, "Times New Roman", serif; --font-head: "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --hl-comment: #6a737d; --hl-keyword: #a626a4; --hl-string: #2f7d32; --hl-number: #b45309; --hl-title: #1d5fa8; --hl-builtin: #0b7285; --hl-variable: #c2410c;
+}

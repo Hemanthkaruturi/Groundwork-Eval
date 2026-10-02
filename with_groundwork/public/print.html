@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Print</title>
+<link rel="stylesheet" href="/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="/base.css">
+<link rel="stylesheet" href="/themes/clean.css">
+<link rel="stylesheet" href="/themes/github.css">
+<link rel="stylesheet" href="/themes/dark.css">
+<link rel="stylesheet" href="/themes/print.css">
+<style>html, body { margin: 0; } #out { padding: 0; }</style>
+<script src="/vendor/hljs/highlight.min.js"></script>
+<script src="/vendor/katex/katex.min.js"></script>
+<script src="/vendor/texmath/texmath.js"></script>
+<script src="/vendor/task-lists/markdown-it-task-lists.min.js"></script>
+<script src="/vendor/mermaid/mermaid.min.js"></script>
+<script src="/render.js"></script>
+</head>
+<body>
+<div id="out"></div>
+<script>
+  // Called by the server (Puppeteer) with { markdown, theme }. Same renderer as the editor preview.
+  window.runPrint = async function (input) {
+    const out = document.getElementById('out');
+    const result = await MdRender.render(input.markdown, out, input.theme);
+    const bg = getComputedStyle(out).backgroundColor;
+    document.documentElement.style.background = bg;
+    document.body.style.background = bg;
+    return result;
+  };
+</script>
+</body>
+</html>

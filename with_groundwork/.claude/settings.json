@@ -1,0 +1,5 @@
+{
+  "enabledPlugins": {
+    "groundwork-specflow@groundwork-specflow": true
+  }
+}
